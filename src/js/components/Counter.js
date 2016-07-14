@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Counter = props => {
     const {
@@ -18,6 +19,7 @@ const Counter = props => {
             <button onClick={ onDecrement }>DECREMENT</button>
             <button onClick={ onAdd }>ADD</button>
             <button onClick={ onRemove }>REMOVE</button>
+            <Link to="/hoge">hogeへ</Link>
         </div>
     );
 };
