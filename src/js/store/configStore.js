@@ -1,6 +1,8 @@
 import { createStore } from 'redux';
 import rootReducer from '../reducers/index';
 
-export default function configStore() {
-    return createStore( rootReducer );
+const reducer = createStore( rootReducer );
+
+export default function configStore(){
+    return reducer;
 }

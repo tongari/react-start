@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Hoge extends React.Component {
 
     render() {
 
-        console.log('hoge!!!');
-
         return (
-            <p>hogehoge</p>
+            <div>
+                <p>hogehoge</p>
+                <Link to="/">toTop</Link>
+            </div>
         )
     }
 }
