@@ -1,37 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import configStore from './store/configStore';
-import Routes from './routes'
-import { Router, Route, browserHistory, hashHistory } from 'react-router'
-
-// import App from './containers/App';
-// import Hoge from './containers/Hoge';
+import Routes from './routes';
 
 const store = configStore();
-
-// const myApp = React.createClass({
-//     render(){
-//         return(
-//             <App store={store} />
-//         )
-//     }
-// });
-
-
-const render = ()=>{
-
-    // ReactDOM.render(
-    //     <Router history={browserHistory}>
-    //         <Route path="/" component={App} />
-    //         <Route path="/hoge" component={Hoge} />
-    //     </Router>,
-    //     document.getElementById('app'))
-
-    ReactDOM.render(
-        <Routes />,
-        document.getElementById('app'))
-}
-
-render();
-store.subscribe(render);
-
+ReactDOM.render(
+    <Provider store={store}>
+        <Routes />
+    </Provider>,
+    document.getElementById('app')
+);

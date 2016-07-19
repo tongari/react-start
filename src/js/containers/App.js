@@ -1,25 +1,24 @@
 import React from 'react';
-import Counter from '../components/Counter';
-import { increment, decrement, add , remove } from '../actions/index';
-import configStore from '../store/configStore';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import * as actions from '../actions';
+import Counter from '../components/Counter';
+
 
 export default class App extends React.Component {
 
     render() {
 
-        // const { store } = this.props;
-        const store = configStore();
-        console.log('App class : ',store.getState().counter);
-
+        const { store,actions} = this.props;
         return (
             <Counter
-                { ...store.getState() }
-                onIncrement = { () => store.dispatch(increment()) }
-                onDecrement = { () => store.dispatch(decrement()) }
-                onAdd = { () => store.dispatch(add()) }
-                onRemove = { () => store.dispatch(remove()) }
-             />
+                { ...store }
+                onIncrement = { () => actions.increment() }
+                onDecrement = { () => actions.decrement() }
+                onAdd = { () => actions.add() }
+                onRemove = { () => actions.remove() }
+            />
         )
     }
 
@@ -29,6 +28,15 @@ export default class App extends React.Component {
     }
 }
 
-// App.propTypes = {
-//     store: React.PropTypes.object.isRequired
-// };
+App.propTypes = {
+    store: React.PropTypes.object.isRequired,
+    actions: React.PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({store: state})
+const mapDispatchToProps = dispatch => ({actions: bindActionCreators(actions, dispatch)})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App)
