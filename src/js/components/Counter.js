@@ -8,7 +8,8 @@ const Counter = props => {
         onIncrement,
         onDecrement,
         onAdd,
-        onRemove
+        onRemove,
+        routing
     } = props;
 
     return (
@@ -20,6 +21,7 @@ const Counter = props => {
             <button onClick={ onAdd }>ADD</button>
             <button onClick={ onRemove }>REMOVE</button>
             <Link to="/hoge">hogeへ</Link>
+            <p>{routing.locationBeforeTransitions.pathname}</p>
         </div>
     );
 };

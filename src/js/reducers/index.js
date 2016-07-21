@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux'
 
 const counter = (state = 0, action) => {
     switch (action.type) {
@@ -22,6 +23,6 @@ const stack = (state = 0, action) => {
     }
 }
 
-const rootReducer = combineReducers({ counter,stack });
+const rootReducer = combineReducers({ counter,stack,routing:routerReducer });
 
 export default rootReducer
